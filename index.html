@@ -1,1142 +1,852 @@
-<div id="wumetax-moonfestival">
-
-<style>
-#wumetax-moonfestival,
-#wumetax-moonfestival * {
-    box-sizing: border-box;
-}
-
-#wumetax-moonfestival {
-    --wm-dark: #141814;
-    --wm-text: #4c554d;
-    --wm-line: rgba(20, 24, 20, 0.09);
-
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    background: #ffffff;
-    color: var(--wm-dark);
-
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        "Noto Sans TC",
-        "PingFang TC",
-        "Microsoft JhengHei",
-        sans-serif;
-
-    overflow: hidden;
-    line-height: 1.7;
-}
-
-#wumetax-moonfestival a {
-    color: inherit;
-    text-decoration: none;
-}
-
-#wumetax-moonfestival .wm-wrap {
-    width: min(1180px, calc(100% - 40px));
-    margin: 0 auto;
-}
-
-
-/* HERO */
-
-#wumetax-moonfestival .wm-hero {
-    position: relative;
-    min-height: 720px;
-
-    display: flex;
-    align-items: center;
-
-    overflow: hidden;
-
-    background:
-        radial-gradient(
-            circle at 77% 35%,
-            rgba(223, 246, 223, .95) 0,
-            rgba(223, 246, 223, .65) 21%,
-            rgba(244, 251, 244, .45) 37%,
-            rgba(255, 255, 255, 0) 58%
-        ),
-        linear-gradient(
-            135deg,
-            #ffffff 0%,
-            #fbfefb 45%,
-            #f1faf2 100%
-        );
-}
-
-#wumetax-moonfestival .wm-grid {
-    position: absolute;
-    inset: 0;
-
-    pointer-events: none;
-    opacity: .45;
-
-    background-image:
-        linear-gradient(
-            rgba(40, 70, 45, .045) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(40, 70, 45, .045) 1px,
-            transparent 1px
-        );
-
-    background-size: 64px 64px;
-
-    -webkit-mask-image:
-        linear-gradient(
-            to bottom,
-            rgba(0, 0, 0, .8),
-            transparent 85%
-        );
-
-    mask-image:
-        linear-gradient(
-            to bottom,
-            rgba(0, 0, 0, .8),
-            transparent 85%
-        );
-}
-
-#wumetax-moonfestival .wm-orb {
-    position: absolute;
-    border-radius: 50%;
-    border: 1px solid rgba(88, 124, 93, .14);
-    pointer-events: none;
-}
-
-#wumetax-moonfestival .wm-orb-1 {
-    width: 360px;
-    height: 360px;
-    right: -120px;
-    top: 80px;
-}
-
-#wumetax-moonfestival .wm-orb-2 {
-    width: 180px;
-    height: 180px;
-    left: -70px;
-    bottom: 80px;
-}
-
-#wumetax-moonfestival .wm-hero-inner {
-    position: relative;
-    z-index: 2;
-
-    width: 100%;
-
-    display: grid;
-    grid-template-columns: 1.05fr .95fr;
-
-    align-items: center;
-    gap: 80px;
-
-    padding: 90px 0;
-}
-
-
-/* HERO 左側 */
-
-#wumetax-moonfestival .wm-content {
-    position: relative;
-    z-index: 3;
-}
-
-#wumetax-moonfestival .wm-eyebrow {
-    display: inline-flex;
-    align-items: center;
-
-    gap: 10px;
-    padding: 8px 14px;
-    margin-bottom: 25px;
-
-    border: 1px solid rgba(62, 99, 67, .13);
-    border-radius: 999px;
-
-    background: rgba(255, 255, 255, .75);
-
-    box-shadow:
-        0 10px 30px rgba(50, 80, 55, .05);
-
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: .08em;
-
-    color: #4f7254;
-}
-
-#wumetax-moonfestival .wm-eyebrow-dot {
-    width: 7px;
-    height: 7px;
-
-    flex: 0 0 7px;
-    border-radius: 50%;
-
-    background: #82b488;
-
-    box-shadow:
-        0 0 0 5px rgba(130, 180, 136, .13);
-}
-
-#wumetax-moonfestival .wm-title {
-    margin: 0;
-
-    font-size: clamp(48px, 6vw, 82px);
-    line-height: 1.07;
-
-    letter-spacing: -.05em;
-    font-weight: 800;
-}
-
-#wumetax-moonfestival .wm-title span {
-    display: block;
-}
-
-#wumetax-moonfestival .wm-title .wm-accent {
-    color: #739b78;
-}
-
-#wumetax-moonfestival .wm-desc {
-    max-width: 610px;
-
-    margin: 28px 0 0;
-
-    color: var(--wm-text);
-
-    font-size: 17px;
-    line-height: 1.9;
-}
-
-
-/* HERO 右側 */
-
-#wumetax-moonfestival .wm-visual {
-    position: relative;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    min-height: 520px;
-}
-
-#wumetax-moonfestival .wm-moon-ring {
-    position: absolute;
-
-    width: 455px;
-    height: 455px;
-
-    border-radius: 50%;
-    border: 1px dashed rgba(80, 120, 86, .22);
-
-    animation:
-        wmRotate 38s linear infinite;
-}
-
-#wumetax-moonfestival .wm-moon-ring::before,
-#wumetax-moonfestival .wm-moon-ring::after {
-    content: "";
-
-    position: absolute;
-
-    width: 9px;
-    height: 9px;
-
-    border-radius: 50%;
-    background: #8eb393;
-}
-
-#wumetax-moonfestival .wm-moon-ring::before {
-    top: 66px;
-    left: 45px;
-}
-
-#wumetax-moonfestival .wm-moon-ring::after {
-    right: 33px;
-    bottom: 100px;
-}
-
-@keyframes wmRotate {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-
-/* 月亮 */
-
-#wumetax-moonfestival .wm-moon {
-    position: relative;
-    z-index: 2;
-
-    width: 330px;
-    height: 330px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle at 37% 30%,
-            rgba(255, 255, 255, .95),
-            transparent 10%
-        ),
-        radial-gradient(
-            circle at 63% 58%,
-            rgba(221, 197, 117, .13),
-            transparent 11%
-        ),
-        radial-gradient(
-            circle at 33% 67%,
-            rgba(219, 196, 115, .12),
-            transparent 9%
-        ),
-        linear-gradient(
-            145deg,
-            #fffdf2,
-            #fff0b4
-        );
-
-    box-shadow:
-        0 30px 90px rgba(178, 158, 88, .18),
-        0 0 110px rgba(255, 235, 166, .38);
-
-    animation:
-        wmFloat 5s ease-in-out infinite;
-}
-
-@keyframes wmFloat {
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-12px);
-    }
-}
-
-
-/* 月亮品牌 */
-
-#wumetax-moonfestival .wm-moon-brand {
-    position: absolute;
-    inset: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-    text-align: center;
-}
-
-#wumetax-moonfestival .wm-moon-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-    transition:
-        transform .25s ease,
-        opacity .25s ease;
-}
-
-#wumetax-moonfestival .wm-moon-link:hover {
-    transform: scale(1.04);
-}
-
-#wumetax-moonfestival .wm-moon-logo {
-    font-size: 29px;
-    font-weight: 900;
-    letter-spacing: -.04em;
-    color: #252b25;
-}
-
-#wumetax-moonfestival .wm-moon-en {
-    margin-top: 4px;
-
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: .25em;
-
-    color: rgba(37, 43, 37, .48);
-}
-
-
-/* 星星 */
-
-#wumetax-moonfestival .wm-star {
-    position: absolute;
-
-    width: 5px;
-    height: 5px;
-
-    border-radius: 50%;
-    background: #93b798;
-
-    box-shadow:
-        0 0 15px rgba(101, 153, 108, .8);
-
-    animation:
-        wmBlink 2.8s ease-in-out infinite;
-}
-
-#wumetax-moonfestival .wm-star-1 {
-    top: 17%;
-    left: 8%;
-}
-
-#wumetax-moonfestival .wm-star-2 {
-    top: 29%;
-    right: 2%;
-    animation-delay: .7s;
-}
-
-#wumetax-moonfestival .wm-star-3 {
-    bottom: 17%;
-    left: 12%;
-    animation-delay: 1.2s;
-}
-
-#wumetax-moonfestival .wm-star-4 {
-    bottom: 7%;
-    right: 16%;
-    animation-delay: 1.8s;
-}
-
-@keyframes wmBlink {
-    0%,
-    100% {
-        opacity: .25;
-        transform: scale(.8);
-    }
-
-    50% {
-        opacity: 1;
-        transform: scale(1.35);
-    }
-}
-
-
-/* 兔子 */
-
-#wumetax-moonfestival .wm-rabbit {
-    position: absolute;
-
-    z-index: 3;
-
-    right: 28px;
-    bottom: 45px;
-
-    width: 120px;
-    height: 138px;
-}
-
-#wumetax-moonfestival .wm-rabbit-ear {
-    position: absolute;
-
-    top: 1px;
-
-    width: 31px;
-    height: 82px;
-
-    background: #fff;
-
-    border: 1px solid rgba(27, 38, 28, .07);
-
-    border-radius:
-        60% 60% 42% 42%;
-
-    transform-origin: bottom;
-}
-
-#wumetax-moonfestival .wm-rabbit-ear::after {
-    content: "";
-
-    position: absolute;
-
-    inset: 11px 9px;
-
-    border-radius: inherit;
-
-    background: #ecf7ed;
-}
-
-#wumetax-moonfestival .wm-rabbit-ear-1 {
-    left: 27px;
-    transform: rotate(-10deg);
-}
-
-#wumetax-moonfestival .wm-rabbit-ear-2 {
-    right: 23px;
-    transform: rotate(13deg);
-}
-
-#wumetax-moonfestival .wm-rabbit-head {
-    position: absolute;
-
-    width: 92px;
-    height: 82px;
-
-    left: 13px;
-    bottom: 8px;
-
-    border-radius:
-        50% 50% 47% 47%;
-
-    background: #fff;
-
-    border: 1px solid rgba(27, 38, 28, .07);
-
-    box-shadow:
-        0 15px 40px rgba(66, 95, 70, .10);
-}
-
-#wumetax-moonfestival .wm-rabbit-eye {
-    position: absolute;
-
-    top: 34px;
-
-    width: 5px;
-    height: 7px;
-
-    border-radius: 50%;
-    background: #313731;
-}
-
-#wumetax-moonfestival .wm-rabbit-eye-1 {
-    left: 26px;
-}
-
-#wumetax-moonfestival .wm-rabbit-eye-2 {
-    right: 26px;
-}
-
-#wumetax-moonfestival .wm-rabbit-nose {
-    position: absolute;
-
-    left: 50%;
-    top: 45px;
-
-    width: 6px;
-    height: 5px;
-
-    margin-left: -3px;
-
-    border-radius: 50%;
-    background: #d4aab0;
-}
-
-
-/* MESSAGE */
-
-#wumetax-moonfestival .wm-message {
-    padding: 105px 0;
-    background: #fff;
-}
-
-#wumetax-moonfestival .wm-message-box {
-    position: relative;
-
-    padding: 70px;
-
-    overflow: hidden;
-
-    border: 1px solid var(--wm-line);
-    border-radius: 28px;
-
-    background: #f5fbf5;
-}
-
-#wumetax-moonfestival .wm-message-box::after {
-    content: "月";
-
-    position: absolute;
-
-    right: -20px;
-    bottom: -90px;
-
-    font-size: 260px;
-    line-height: 1;
-    font-weight: 900;
-
-    color:
-        rgba(100, 140, 106, .06);
-}
-
-#wumetax-moonfestival .wm-small-title {
-    position: relative;
-    z-index: 2;
-
-    color: #76957b;
-
-    font-size: 13px;
-    font-weight: 800;
-
-    letter-spacing: .16em;
-    text-transform: uppercase;
-}
-
-#wumetax-moonfestival .wm-message-title {
-    position: relative;
-    z-index: 2;
-
-    max-width: 750px;
-
-    margin: 12px 0 0;
-
-    font-size:
-        clamp(32px, 4vw, 50px);
-
-    line-height: 1.25;
-    letter-spacing: -.04em;
-
-    font-weight: 800;
-}
-
-#wumetax-moonfestival .wm-message-text {
-    position: relative;
-    z-index: 2;
-
-    max-width: 760px;
-
-    margin: 22px 0 0;
-
-    color: #566057;
-
-    font-size: 16px;
-    line-height: 2;
-}
-
-
-/* 三張卡 */
-
-#wumetax-moonfestival .wm-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 18px;
-    margin-top: 25px;
-}
-
-#wumetax-moonfestival .wm-card {
-    padding: 30px;
-
-    border: 1px solid var(--wm-line);
-    border-radius: 20px;
-
-    background: #fff;
-
-    transition:
-        transform .25s ease,
-        box-shadow .25s ease,
-        border-color .25s ease;
-}
-
-#wumetax-moonfestival .wm-card:hover {
-    transform: translateY(-4px);
-
-    border-color:
-        rgba(110, 156, 115, .18);
-
-    box-shadow:
-        0 15px 40px rgba(45, 75, 50, .07);
-}
-
-#wumetax-moonfestival .wm-card-index {
-    color: #87a88b;
-
-    font-size: 12px;
-    font-weight: 800;
-
-    letter-spacing: .12em;
-}
-
-#wumetax-moonfestival .wm-card h3 {
-    margin: 13px 0 5px;
-
-    color: var(--wm-dark);
-
-    font-size: 20px;
-    font-weight: 800;
-}
-
-#wumetax-moonfestival .wm-card p {
-    margin: 0;
-
-    color: #687169;
-
-    font-size: 14px;
-    line-height: 1.8;
-}
-
-
-/* FOOTER */
-
-#wumetax-moonfestival .wm-footer {
-    padding: 45px 0 65px;
-    background: #fff;
-}
-
-#wumetax-moonfestival .wm-footer-line {
-    height: 1px;
-
-    background: var(--wm-line);
-
-    margin-bottom: 28px;
-}
-
-#wumetax-moonfestival .wm-footer-inner {
-    display: flex;
-
-    justify-content: space-between;
-    align-items: center;
-
-    gap: 25px;
-}
-
-#wumetax-moonfestival .wm-footer-brand {
-    display: inline-block;
-
-    font-size: 18px;
-    font-weight: 900;
-
-    letter-spacing: -.03em;
-
-    transition:
-        opacity .2s ease;
-}
-
-#wumetax-moonfestival .wm-footer-brand:hover {
-    opacity: .65;
-}
-
-#wumetax-moonfestival .wm-footer-copy {
-    color: #868d87;
-    font-size: 12px;
-}
-
-
-/* 平板 */
-
-@media (max-width: 900px) {
-
-    #wumetax-moonfestival .wm-hero {
-        min-height: auto;
-    }
-
-    #wumetax-moonfestival .wm-hero-inner {
-        grid-template-columns: 1fr;
-
-        gap: 40px;
-
-        padding:
-            75px 0 70px;
-    }
-
-    #wumetax-moonfestival .wm-visual {
-        min-height: 440px;
-    }
-
-    #wumetax-moonfestival .wm-moon-ring {
-        width: 390px;
-        height: 390px;
-    }
-
-    #wumetax-moonfestival .wm-moon {
-        width: 285px;
-        height: 285px;
-    }
-
-    #wumetax-moonfestival .wm-message-box {
-        padding: 45px;
-    }
-
-    #wumetax-moonfestival .wm-cards {
-        grid-template-columns: 1fr;
-    }
-
-}
-
-
-/* 手機 */
-
-@media (max-width: 560px) {
-
-    #wumetax-moonfestival .wm-wrap {
-        width: min(100% - 28px, 1180px);
-    }
-
-    #wumetax-moonfestival .wm-hero-inner {
-        padding-top: 60px;
-        padding-bottom: 55px;
-    }
-
-    #wumetax-moonfestival .wm-eyebrow {
-        font-size: 11px;
-        padding: 7px 11px;
-    }
-
-    #wumetax-moonfestival .wm-title {
-        font-size: 47px;
-        line-height: 1.1;
-    }
-
-    #wumetax-moonfestival .wm-desc {
-        font-size: 15px;
-        line-height: 1.9;
-    }
-
-    #wumetax-moonfestival .wm-visual {
-        min-height: 360px;
-    }
-
-    #wumetax-moonfestival .wm-moon-ring {
-        width: 310px;
-        height: 310px;
-    }
-
-    #wumetax-moonfestival .wm-moon {
-        width: 235px;
-        height: 235px;
-    }
-
-    #wumetax-moonfestival .wm-moon-logo {
-        font-size: 23px;
-    }
-
-    #wumetax-moonfestival .wm-rabbit {
-        transform: scale(.75);
-        transform-origin: right bottom;
-
-        right: 0;
-        bottom: 25px;
-    }
-
-    #wumetax-moonfestival .wm-message {
-        padding: 70px 0;
-    }
-
-    #wumetax-moonfestival .wm-message-box {
-        padding: 32px 25px;
-        border-radius: 20px;
-    }
-
-    #wumetax-moonfestival .wm-message-title {
-        font-size: 31px;
-    }
-
-    #wumetax-moonfestival .wm-message-text {
-        font-size: 15px;
-    }
-
-    #wumetax-moonfestival .wm-card {
-        padding: 25px;
-    }
-
-    #wumetax-moonfestival .wm-footer-inner {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-}
-
-
-/* 減少動畫 */
-
-@media (prefers-reduced-motion: reduce) {
-
-    #wumetax-moonfestival .wm-moon,
-    #wumetax-moonfestival .wm-moon-ring,
-    #wumetax-moonfestival .wm-star {
-        animation: none !important;
-    }
-
-}
-</style>
-
-
-<!-- HERO -->
-
-<section class="wm-hero">
-
-    <div class="wm-grid"></div>
-
-    <div class="wm-orb wm-orb-1"></div>
-    <div class="wm-orb wm-orb-2"></div>
-
-    <div class="wm-wrap">
-
-        <div class="wm-hero-inner">
-
-
-            <!-- LEFT -->
-
-            <div class="wm-content">
-
-                <div class="wm-eyebrow">
-
-                    <span class="wm-eyebrow-dot"></span>
-
-                    WUMETAX · MID-AUTUMN FESTIVAL
-
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>中秋佳節快樂｜WUMETAX 末特數位科技</title>
+    <meta name="description" content="WUMETAX 末特數位科技祝您中秋佳節快樂 月圓人圓 事事圓滿">
+
+    <link rel="canonical" href="https://wumetax-moonfestival.pages.dev/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:site_name" content="WUMETAX">
+    <meta property="og:title" content="中秋佳節快樂｜WUMETAX 末特數位科技">
+    <meta property="og:description" content="WUMETAX 末特數位科技祝您中秋佳節快樂 月圓人圓 事事圓滿">
+    <meta property="og:url" content="https://wumetax-moonfestival.pages.dev/">
+    <meta property="og:image" content="https://wumetax-moonfestival.pages.dev/og-image.jpg">
+    <meta property="og:image:secure_url" content="https://wumetax-moonfestival.pages.dev/og-image.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="WUMETAX 中秋佳節快樂 月圓人圓">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="中秋佳節快樂｜WUMETAX 末特數位科技">
+    <meta name="twitter:description" content="WUMETAX 末特數位科技祝您中秋佳節快樂 月圓人圓 事事圓滿">
+    <meta name="twitter:image" content="https://wumetax-moonfestival.pages.dev/og-image.jpg">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            --wm-dark: #141814;
+            --wm-text: #4c554d;
+            --wm-line: rgba(20, 24, 20, 0.09);
+
+            background: #ffffff;
+            color: var(--wm-dark);
+
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                "Noto Sans TC",
+                "PingFang TC",
+                "Microsoft JhengHei",
+                sans-serif;
+
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .wm-wrap {
+            width: min(1180px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .wm-hero {
+            position: relative;
+            min-height: 720px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background:
+                radial-gradient(
+                    circle at 77% 35%,
+                    rgba(223, 246, 223, .95) 0,
+                    rgba(223, 246, 223, .65) 21%,
+                    rgba(244, 251, 244, .45) 37%,
+                    rgba(255, 255, 255, 0) 58%
+                ),
+                linear-gradient(
+                    135deg,
+                    #ffffff 0%,
+                    #fbfefb 45%,
+                    #f1faf2 100%
+                );
+        }
+
+        .wm-grid {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            opacity: .45;
+            background-image:
+                linear-gradient(
+                    rgba(40, 70, 45, .045) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(40, 70, 45, .045) 1px,
+                    transparent 1px
+                );
+            background-size: 64px 64px;
+            -webkit-mask-image:
+                linear-gradient(
+                    to bottom,
+                    rgba(0, 0, 0, .8),
+                    transparent 85%
+                );
+            mask-image:
+                linear-gradient(
+                    to bottom,
+                    rgba(0, 0, 0, .8),
+                    transparent 85%
+                );
+        }
+
+        .wm-orb {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(88, 124, 93, .14);
+            pointer-events: none;
+        }
+
+        .wm-orb-1 {
+            width: 360px;
+            height: 360px;
+            right: -120px;
+            top: 80px;
+        }
+
+        .wm-orb-2 {
+            width: 180px;
+            height: 180px;
+            left: -70px;
+            bottom: 80px;
+        }
+
+        .wm-hero-inner {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            align-items: center;
+            gap: 80px;
+            padding: 90px 0;
+        }
+
+        .wm-content {
+            position: relative;
+            z-index: 3;
+        }
+
+        .wm-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 14px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(62, 99, 67, .13);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .75);
+            box-shadow: 0 10px 30px rgba(50, 80, 55, .05);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: .08em;
+            color: #4f7254;
+        }
+
+        .wm-eyebrow-dot {
+            width: 7px;
+            height: 7px;
+            flex: 0 0 7px;
+            border-radius: 50%;
+            background: #82b488;
+            box-shadow: 0 0 0 5px rgba(130, 180, 136, .13);
+        }
+
+        .wm-title {
+            margin: 0;
+            font-size: clamp(48px, 6vw, 82px);
+            line-height: 1.07;
+            letter-spacing: -.05em;
+            font-weight: 600;
+        }
+
+        .wm-title span {
+            display: block;
+        }
+
+        .wm-title .wm-accent {
+            color: #739b78;
+        }
+
+        .wm-desc {
+            max-width: 610px;
+            margin: 28px 0 0;
+            color: var(--wm-text);
+            font-size: 17px;
+            font-weight: 400;
+            line-height: 1.9;
+        }
+
+        .wm-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 520px;
+        }
+
+        .wm-moon-ring {
+            position: absolute;
+            width: 455px;
+            height: 455px;
+            border-radius: 50%;
+            border: 1px dashed rgba(80, 120, 86, .22);
+            animation: wmRotate 38s linear infinite;
+        }
+
+        .wm-moon-ring::before,
+        .wm-moon-ring::after {
+            content: "";
+            position: absolute;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #8eb393;
+        }
+
+        .wm-moon-ring::before {
+            top: 66px;
+            left: 45px;
+        }
+
+        .wm-moon-ring::after {
+            right: 33px;
+            bottom: 100px;
+        }
+
+        @keyframes wmRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .wm-moon {
+            position: relative;
+            z-index: 2;
+            width: 330px;
+            height: 330px;
+            border-radius: 50%;
+            background:
+                radial-gradient(
+                    circle at 37% 30%,
+                    rgba(255, 255, 255, .95),
+                    transparent 10%
+                ),
+                radial-gradient(
+                    circle at 63% 58%,
+                    rgba(221, 197, 117, .13),
+                    transparent 11%
+                ),
+                radial-gradient(
+                    circle at 33% 67%,
+                    rgba(219, 196, 115, .12),
+                    transparent 9%
+                ),
+                linear-gradient(
+                    145deg,
+                    #fffdf2,
+                    #fff0b4
+                );
+            box-shadow:
+                0 30px 90px rgba(178, 158, 88, .18),
+                0 0 110px rgba(255, 235, 166, .38);
+            animation: wmFloat 5s ease-in-out infinite;
+        }
+
+        @keyframes wmFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .wm-moon-brand {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .wm-moon-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: transform .25s ease, opacity .25s ease;
+        }
+
+        .wm-moon-link:hover {
+            transform: scale(1.04);
+        }
+
+        .wm-moon-logo {
+            font-size: 29px;
+            font-weight: 700;
+            letter-spacing: -.04em;
+            color: #252b25;
+        }
+
+        .wm-moon-en {
+            margin-top: 4px;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: .25em;
+            color: rgba(37, 43, 37, .48);
+        }
+
+        .wm-star {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #93b798;
+            box-shadow: 0 0 15px rgba(101, 153, 108, .8);
+            animation: wmBlink 2.8s ease-in-out infinite;
+        }
+
+        .wm-star-1 {
+            top: 17%;
+            left: 8%;
+        }
+
+        .wm-star-2 {
+            top: 29%;
+            right: 2%;
+            animation-delay: .7s;
+        }
+
+        .wm-star-3 {
+            bottom: 17%;
+            left: 12%;
+            animation-delay: 1.2s;
+        }
+
+        .wm-star-4 {
+            bottom: 7%;
+            right: 16%;
+            animation-delay: 1.8s;
+        }
+
+        @keyframes wmBlink {
+            0%, 100% {
+                opacity: .25;
+                transform: scale(.8);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.35);
+            }
+        }
+
+        .wm-rabbit {
+            position: absolute;
+            z-index: 3;
+            right: 28px;
+            bottom: 45px;
+            width: 120px;
+            height: 138px;
+        }
+
+        .wm-rabbit-ear {
+            position: absolute;
+            top: 1px;
+            width: 31px;
+            height: 82px;
+            background: #fff;
+            border: 1px solid rgba(27, 38, 28, .07);
+            border-radius: 60% 60% 42% 42%;
+            transform-origin: bottom;
+        }
+
+        .wm-rabbit-ear::after {
+            content: "";
+            position: absolute;
+            inset: 11px 9px;
+            border-radius: inherit;
+            background: #ecf7ed;
+        }
+
+        .wm-rabbit-ear-1 {
+            left: 27px;
+            transform: rotate(-10deg);
+        }
+
+        .wm-rabbit-ear-2 {
+            right: 23px;
+            transform: rotate(13deg);
+        }
+
+        .wm-rabbit-head {
+            position: absolute;
+            width: 92px;
+            height: 82px;
+            left: 13px;
+            bottom: 8px;
+            border-radius: 50% 50% 47% 47%;
+            background: #fff;
+            border: 1px solid rgba(27, 38, 28, .07);
+            box-shadow: 0 15px 40px rgba(66, 95, 70, .10);
+        }
+
+        .wm-rabbit-eye {
+            position: absolute;
+            top: 34px;
+            width: 5px;
+            height: 7px;
+            border-radius: 50%;
+            background: #313731;
+        }
+
+        .wm-rabbit-eye-1 {
+            left: 26px;
+        }
+
+        .wm-rabbit-eye-2 {
+            right: 26px;
+        }
+
+        .wm-rabbit-nose {
+            position: absolute;
+            left: 50%;
+            top: 45px;
+            width: 6px;
+            height: 5px;
+            margin-left: -3px;
+            border-radius: 50%;
+            background: #d4aab0;
+        }
+
+        .wm-message {
+            padding: 105px 0;
+            background: #fff;
+        }
+
+        .wm-message-box {
+            position: relative;
+            padding: 70px;
+            overflow: hidden;
+            border: 1px solid var(--wm-line);
+            border-radius: 28px;
+            background: #f5fbf5;
+        }
+
+        .wm-message-box::after {
+            content: "月";
+            position: absolute;
+            right: -20px;
+            bottom: -90px;
+            font-size: 260px;
+            line-height: 1;
+            font-weight: 700;
+            color: rgba(100, 140, 106, .06);
+        }
+
+        .wm-small-title {
+            position: relative;
+            z-index: 2;
+            color: #76957b;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+        }
+
+        .wm-message-title {
+            position: relative;
+            z-index: 2;
+            max-width: 750px;
+            margin: 12px 0 0;
+            font-size: clamp(32px, 4vw, 50px);
+            line-height: 1.25;
+            letter-spacing: -.04em;
+            font-weight: 600;
+        }
+
+        .wm-message-text {
+            position: relative;
+            z-index: 2;
+            max-width: 760px;
+            margin: 22px 0 0;
+            color: #566057;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 2;
+        }
+
+        .wm-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-top: 25px;
+        }
+
+        .wm-card {
+            padding: 30px;
+            border: 1px solid var(--wm-line);
+            border-radius: 20px;
+            background: #fff;
+            transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+        }
+
+        .wm-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(110, 156, 115, .18);
+            box-shadow: 0 15px 40px rgba(45, 75, 50, .07);
+        }
+
+        .wm-card-index {
+            color: #87a88b;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: .12em;
+        }
+
+        .wm-card h3 {
+            margin: 13px 0 5px;
+            color: var(--wm-dark);
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .wm-card p {
+            margin: 0;
+            color: #687169;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        .wm-footer {
+            padding: 45px 0 65px;
+            background: #fff;
+        }
+
+        .wm-footer-line {
+            height: 1px;
+            background: var(--wm-line);
+            margin-bottom: 28px;
+        }
+
+        .wm-footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .wm-footer-brand {
+            display: inline-block;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: -.03em;
+            transition: opacity .2s ease;
+        }
+
+        .wm-footer-brand:hover {
+            opacity: .65;
+        }
+
+        .wm-footer-copy {
+            color: #868d87;
+            font-size: 12px;
+            font-weight: 400;
+        }
+
+        @media (max-width: 900px) {
+            .wm-hero {
+                min-height: auto;
+            }
+
+            .wm-hero-inner {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 75px 0 70px;
+            }
+
+            .wm-visual {
+                min-height: 440px;
+            }
+
+            .wm-moon-ring {
+                width: 390px;
+                height: 390px;
+            }
+
+            .wm-moon {
+                width: 285px;
+                height: 285px;
+            }
+
+            .wm-message-box {
+                padding: 45px;
+            }
+
+            .wm-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .wm-wrap {
+                width: min(100% - 28px, 1180px);
+            }
+
+            .wm-hero-inner {
+                padding-top: 60px;
+                padding-bottom: 55px;
+            }
+
+            .wm-eyebrow {
+                font-size: 11px;
+                padding: 7px 11px;
+            }
+
+            .wm-title {
+                font-size: 47px;
+                line-height: 1.1;
+            }
+
+            .wm-desc {
+                font-size: 15px;
+                line-height: 1.9;
+            }
+
+            .wm-visual {
+                min-height: 360px;
+            }
+
+            .wm-moon-ring {
+                width: 310px;
+                height: 310px;
+            }
+
+            .wm-moon {
+                width: 235px;
+                height: 235px;
+            }
+
+            .wm-moon-logo {
+                font-size: 23px;
+            }
+
+            .wm-rabbit {
+                transform: scale(.75);
+                transform-origin: right bottom;
+                right: 0;
+                bottom: 25px;
+            }
+
+            .wm-message {
+                padding: 70px 0;
+            }
+
+            .wm-message-box {
+                padding: 32px 25px;
+                border-radius: 20px;
+            }
+
+            .wm-message-title {
+                font-size: 31px;
+            }
+
+            .wm-message-text {
+                font-size: 15px;
+            }
+
+            .wm-card {
+                padding: 25px;
+            }
+
+            .wm-footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .wm-moon,
+            .wm-moon-ring,
+            .wm-star {
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="wm-hero">
+        <div class="wm-grid"></div>
+        <div class="wm-orb wm-orb-1"></div>
+        <div class="wm-orb wm-orb-2"></div>
+
+        <div class="wm-wrap">
+            <div class="wm-hero-inner">
+
+                <div class="wm-content">
+                    <div class="wm-eyebrow">
+                        <span class="wm-eyebrow-dot"></span>
+                        WUMETAX · MID-AUTUMN FESTIVAL
+                    </div>
+
+                    <h1 class="wm-title">
+                        <span>月圓・人圓</span>
+                        <span class="wm-accent">中秋佳節快樂</span>
+                    </h1>
+
+                    <p class="wm-desc">
+                        一輪明月 承載著團聚與思念
+                        <br>
+                        WUMETAX 末特數位科技感謝每一位客戶與夥伴一路以來的支持與信任
+                        願這個中秋與重要的人共享美好時光
+                        也祝福您事事圓滿 平安順心
+                    </p>
                 </div>
 
+                <div class="wm-visual">
+                    <span class="wm-star wm-star-1"></span>
+                    <span class="wm-star wm-star-2"></span>
+                    <span class="wm-star wm-star-3"></span>
+                    <span class="wm-star wm-star-4"></span>
 
-                <h1 class="wm-title">
+                    <div class="wm-moon-ring"></div>
 
-                    <span>
-                        月圓・人圓
-                    </span>
+                    <div class="wm-moon">
+                        <div class="wm-moon-brand">
+                            <a
+                                class="wm-moon-link"
+                                href="https://wumetax.com/"
+                                target="_blank"
+                                rel="noopener"
+                                aria-label="前往 WUMETAX 官方網站"
+                            >
+                                <div class="wm-moon-logo">WUMETAX</div>
+                                <div class="wm-moon-en">DIGITAL STUDIO</div>
+                            </a>
+                        </div>
+                    </div>
 
-                    <span class="wm-accent">
-                        中秋佳節快樂
-                    </span>
+                    <div class="wm-rabbit">
+                        <div class="wm-rabbit-ear wm-rabbit-ear-1"></div>
+                        <div class="wm-rabbit-ear wm-rabbit-ear-2"></div>
+                        <div class="wm-rabbit-head">
+                            <div class="wm-rabbit-eye wm-rabbit-eye-1"></div>
+                            <div class="wm-rabbit-eye wm-rabbit-eye-2"></div>
+                            <div class="wm-rabbit-nose"></div>
+                        </div>
+                    </div>
+                </div>
 
-                </h1>
+            </div>
+        </div>
+    </section>
 
+    <section class="wm-message">
+        <div class="wm-wrap">
 
-                <p class="wm-desc">
+            <div class="wm-message-box">
+                <div class="wm-small-title">A MESSAGE FROM WUMETAX</div>
 
-                    一輪明月，承載著團聚與思念
-
+                <h2 class="wm-message-title">
+                    把美好的想法做成網站
                     <br>
+                    也把每一次合作變成長久的連結
+                </h2>
 
-                    WUMETAX 末特數位科技感謝每一位客戶與夥伴一路以來的支持與信任
-
-                    願這個中秋與重要的人共享美好時光
-
-                    也祝福您事事圓滿、平安順心
-
+                <p class="wm-message-text">
+                    感謝一路上與 WUMETAX 合作的每一位客戶與夥伴
+                    在這個象徵團聚與圓滿的日子裡
+                    末特數位科技祝您與家人中秋佳節愉快
+                    工作順利 事業圓滿
+                    所有正在努力的事情都能逐漸開花結果
                 </p>
-
             </div>
 
-
-            <!-- RIGHT -->
-
-            <div class="wm-visual">
-
-                <span class="wm-star wm-star-1"></span>
-                <span class="wm-star wm-star-2"></span>
-                <span class="wm-star wm-star-3"></span>
-                <span class="wm-star wm-star-4"></span>
-
-
-                <div class="wm-moon-ring"></div>
-
-
-                <div class="wm-moon">
-
-                    <div class="wm-moon-brand">
-
-                        <a
-                            class="wm-moon-link"
-                            href="https://wumetax.com/"
-                            aria-label="前往 WUMETAX 末特數位科技官方網站"
-                        >
-
-                            <div class="wm-moon-logo">
-                                WUMETAX
-                            </div>
-
-                            <div class="wm-moon-en">
-                                DIGITAL STUDIO
-                            </div>
-
-                        </a>
-
-                    </div>
-
+            <div class="wm-cards">
+                <div class="wm-card">
+                    <div class="wm-card-index">01 · REUNION</div>
+                    <h3>月圓人團圓</h3>
+                    <p>
+                        願忙碌的生活裡
+                        仍保留與家人朋友相聚的美好時光
+                    </p>
                 </div>
 
-
-                <!-- RABBIT -->
-
-                <div class="wm-rabbit">
-
-                    <div
-                        class="wm-rabbit-ear wm-rabbit-ear-1"
-                    ></div>
-
-                    <div
-                        class="wm-rabbit-ear wm-rabbit-ear-2"
-                    ></div>
-
-                    <div class="wm-rabbit-head">
-
-                        <div
-                            class="wm-rabbit-eye wm-rabbit-eye-1"
-                        ></div>
-
-                        <div
-                            class="wm-rabbit-eye wm-rabbit-eye-2"
-                        ></div>
-
-                        <div
-                            class="wm-rabbit-nose"
-                        ></div>
-
-                    </div>
-
+                <div class="wm-card">
+                    <div class="wm-card-index">02 · THANKS</div>
+                    <h3>感謝一路支持</h3>
+                    <p>
+                        每一次網站建置與長期合作
+                        都是 WUMETAX 持續前進的重要力量
+                    </p>
                 </div>
 
-
+                <div class="wm-card">
+                    <div class="wm-card-index">03 · FUTURE</div>
+                    <h3>一起迎向下一站</h3>
+                    <p>
+                        未來也將持續透過網站設計 電商與技術服務
+                        陪伴品牌持續成長
+                    </p>
+                </div>
             </div>
 
         </div>
+    </section>
 
-    </div>
+    <section class="wm-footer">
+        <div class="wm-wrap">
+            <div class="wm-footer-line"></div>
 
-</section>
+            <div class="wm-footer-inner">
+                <a
+                    class="wm-footer-brand"
+                    href="https://wumetax.com/"
+                    target="_blank"
+                    rel="noopener"
+                    aria-label="WUMETAX 末特數位科技"
+                >
+                    WUMETAX
+                </a>
 
-
-<!-- MESSAGE -->
-
-<section class="wm-message">
-
-    <div class="wm-wrap">
-
-        <div class="wm-message-box">
-
-            <div class="wm-small-title">
-                A MESSAGE FROM WUMETAX
-            </div>
-
-
-            <h2 class="wm-message-title">
-
-                把美好的想法做成網站
-
-                <br>
-
-                也把每一次合作變成長久的連結
-
-            </h2>
-
-
-            <p class="wm-message-text">
-
-                感謝一路上與 WUMETAX 合作的每一位客戶與夥伴
-
-                在這個象徵團聚與圓滿的日子裡
-
-                末特數位科技祝您與家人中秋佳節愉快
-
-                工作順利、事業圓滿
-
-                所有正在努力的事情都能逐漸開花結果
-
-            </p>
-
-        </div>
-
-
-        <!-- CARDS -->
-
-        <div class="wm-cards">
-
-
-            <div class="wm-card">
-
-                <div class="wm-card-index">
-                    01 · REUNION
+                <div class="wm-footer-copy">
+                    末特數位科技有限公司 ｜ Happy Mid-Autumn Festival
                 </div>
-
-                <h3>
-                    月圓人團圓
-                </h3>
-
-                <p>
-                    願忙碌的生活裡
-                    仍保留與家人朋友相聚的美好時光
-                </p>
-
             </div>
-
-
-            <div class="wm-card">
-
-                <div class="wm-card-index">
-                    02 · THANKS
-                </div>
-
-                <h3>
-                    感謝一路支持
-                </h3>
-
-                <p>
-                    每一次網站建置與長期合作
-                    都是 WUMETAX 持續前進的重要力量
-                </p>
-
-            </div>
-
-
-            <div class="wm-card">
-
-                <div class="wm-card-index">
-                    03 · FUTURE
-                </div>
-
-                <h3>
-                    一起迎向下一站
-                </h3>
-
-                <p>
-                    未來也將持續透過網站設計、電商與技術服務
-                    陪伴品牌持續成長
-                </p>
-
-            </div>
-
-
         </div>
+    </section>
 
-    </div>
-
-</section>
-
-
-<!-- FOOTER -->
-
-<section class="wm-footer">
-
-    <div class="wm-wrap">
-
-        <div class="wm-footer-line"></div>
-
-
-        <div class="wm-footer-inner">
-
-            <a
-                class="wm-footer-brand"
-                href="https://wumetax.com/"
-                aria-label="WUMETAX 末特數位科技"
-            >
-                WUMETAX
-            </a>
-
-
-            <div class="wm-footer-copy">
-
-                末特數位科技有限公司 · Happy Mid-Autumn Festival
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-</div>
+</body>
+</html>
