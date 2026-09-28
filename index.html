@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f7fbf7">
 
     <title>中秋佳節快樂｜WUMETAX 末特數位科技</title>
     <meta name="description" content="WUMETAX 末特數位科技祝您中秋佳節快樂 月圓人圓 事事圓滿">
@@ -60,6 +61,8 @@
 
             line-height: 1.7;
             overflow-x: hidden;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
         }
 
         a {
@@ -122,6 +125,13 @@
                     rgba(0, 0, 0, .8),
                     transparent 85%
                 );
+            animation: wmGridDrift 18s linear infinite alternate;
+            will-change: background-position;
+        }
+
+        @keyframes wmGridDrift {
+            from { background-position: 0 0, 0 0; }
+            to { background-position: 18px 12px, -14px 16px; }
         }
 
         .wm-orb {
@@ -136,6 +146,7 @@
             height: 360px;
             right: -120px;
             top: 80px;
+            animation: wmOrbFloatA 10s ease-in-out infinite;
         }
 
         .wm-orb-2 {
@@ -143,6 +154,17 @@
             height: 180px;
             left: -70px;
             bottom: 80px;
+            animation: wmOrbFloatB 12s ease-in-out infinite;
+        }
+
+        @keyframes wmOrbFloatA {
+            0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+            50% { transform: translate3d(-10px, 14px, 0) scale(1.035); }
+        }
+
+        @keyframes wmOrbFloatB {
+            0%, 100% { transform: translate3d(0, 0, 0); }
+            50% { transform: translate3d(14px, -10px, 0); }
         }
 
         .wm-hero-inner {
@@ -159,6 +181,18 @@
         .wm-content {
             position: relative;
             z-index: 3;
+            animation: wmRevealLeft .85s cubic-bezier(.2,.75,.25,1) both;
+        }
+
+        @keyframes wmRevealLeft {
+            from {
+                opacity: 0;
+                transform: translate3d(-18px, 16px, 0);
+            }
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
         }
 
         .wm-eyebrow {
@@ -175,6 +209,12 @@
             font-weight: 500;
             letter-spacing: .08em;
             color: #4f7254;
+            animation: wmBadgeGlow 5s ease-in-out infinite;
+        }
+
+        @keyframes wmBadgeGlow {
+            0%, 100% { box-shadow: 0 10px 30px rgba(50, 80, 55, .05); }
+            50% { box-shadow: 0 12px 34px rgba(90, 135, 95, .12); }
         }
 
         .wm-eyebrow-dot {
@@ -200,6 +240,17 @@
 
         .wm-title .wm-accent {
             color: #739b78;
+            background: linear-gradient(100deg, #739b78 20%, #9fbe9e 45%, #739b78 70%);
+            background-size: 220% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: wmTextShine 7s ease-in-out infinite;
+        }
+
+        @keyframes wmTextShine {
+            0%, 65%, 100% { background-position: 100% 0; }
+            35% { background-position: 0 0; }
         }
 
         .wm-desc {
@@ -217,6 +268,18 @@
             justify-content: center;
             align-items: center;
             min-height: 520px;
+            animation: wmRevealRight 1s .12s cubic-bezier(.2,.75,.25,1) both;
+        }
+
+        @keyframes wmRevealRight {
+            from {
+                opacity: 0;
+                transform: translate3d(22px, 10px, 0) scale(.985);
+            }
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0) scale(1);
+            }
         }
 
         .wm-moon-ring {
@@ -226,6 +289,7 @@
             border-radius: 50%;
             border: 1px dashed rgba(80, 120, 86, .22);
             animation: wmRotate 38s linear infinite;
+            will-change: transform;
         }
 
         .wm-moon-ring::before,
@@ -283,12 +347,26 @@
             box-shadow:
                 0 30px 90px rgba(178, 158, 88, .18),
                 0 0 110px rgba(255, 235, 166, .38);
-            animation: wmFloat 5s ease-in-out infinite;
+            animation: wmFloat 5s ease-in-out infinite, wmMoonGlow 6.5s ease-in-out infinite;
+            will-change: transform;
         }
 
         @keyframes wmFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
+            0%, 100% { transform: translate3d(0, 0, 0); }
+            50% { transform: translate3d(0, -12px, 0); }
+        }
+
+        @keyframes wmMoonGlow {
+            0%, 100% {
+                box-shadow:
+                    0 30px 90px rgba(178, 158, 88, .18),
+                    0 0 90px rgba(255, 235, 166, .32);
+            }
+            50% {
+                box-shadow:
+                    0 34px 98px rgba(178, 158, 88, .22),
+                    0 0 125px rgba(255, 235, 166, .48);
+            }
         }
 
         .wm-moon-brand {
@@ -403,11 +481,25 @@
         .wm-rabbit-ear-1 {
             left: 27px;
             transform: rotate(-10deg);
+            animation: wmEarLeft 4.8s ease-in-out infinite;
         }
 
         .wm-rabbit-ear-2 {
             right: 23px;
             transform: rotate(13deg);
+            animation: wmEarRight 4.8s .22s ease-in-out infinite;
+        }
+
+        @keyframes wmEarLeft {
+            0%, 72%, 100% { transform: rotate(-10deg); }
+            80% { transform: rotate(-16deg); }
+            88% { transform: rotate(-7deg); }
+        }
+
+        @keyframes wmEarRight {
+            0%, 70%, 100% { transform: rotate(13deg); }
+            78% { transform: rotate(19deg); }
+            87% { transform: rotate(10deg); }
         }
 
         .wm-rabbit-head {
@@ -433,10 +525,17 @@
 
         .wm-rabbit-eye-1 {
             left: 26px;
+            animation: wmBlinkEye 5.4s infinite;
         }
 
         .wm-rabbit-eye-2 {
             right: 26px;
+            animation: wmBlinkEye 5.4s infinite;
+        }
+
+        @keyframes wmBlinkEye {
+            0%, 46%, 50%, 100% { transform: scaleY(1); }
+            48% { transform: scaleY(.12); }
         }
 
         .wm-rabbit-nose {
@@ -453,6 +552,8 @@
         .wm-message {
             padding: 105px 0;
             background: #fff;
+            content-visibility: auto;
+            contain-intrinsic-size: 900px;
         }
 
         .wm-message-box {
@@ -462,6 +563,18 @@
             border: 1px solid var(--wm-line);
             border-radius: 28px;
             background: #f5fbf5;
+            animation: wmSectionRise .8s .18s cubic-bezier(.2,.75,.25,1) both;
+        }
+
+        @keyframes wmSectionRise {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 22px, 0);
+            }
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
         }
 
         .wm-message-box::after {
@@ -520,6 +633,22 @@
             border-radius: 20px;
             background: #fff;
             transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+            animation: wmCardRise .7s cubic-bezier(.2,.75,.25,1) both;
+        }
+
+        .wm-card:nth-child(1) { animation-delay: .28s; }
+        .wm-card:nth-child(2) { animation-delay: .40s; }
+        .wm-card:nth-child(3) { animation-delay: .52s; }
+
+        @keyframes wmCardRise {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 18px, 0);
+            }
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
         }
 
         .wm-card:hover {
@@ -553,6 +682,8 @@
         .wm-footer {
             padding: 45px 0 65px;
             background: #fff;
+            content-visibility: auto;
+            contain-intrinsic-size: 140px;
         }
 
         .wm-footer-line {
@@ -576,8 +707,27 @@
             transition: opacity .2s ease;
         }
 
+        .wm-footer-brand {
+            position: relative;
+        }
+
+        .wm-footer-brand::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 100%;
+            bottom: -5px;
+            height: 1px;
+            background: #87a88b;
+            transition: right .25s ease;
+        }
+
         .wm-footer-brand:hover {
-            opacity: .65;
+            opacity: .72;
+        }
+
+        .wm-footer-brand:hover::after {
+            right: 0;
         }
 
         .wm-footer-copy {
@@ -670,6 +820,19 @@
                 bottom: 25px;
             }
 
+            .wm-grid {
+                animation-duration: 26s;
+            }
+
+            .wm-orb-1,
+            .wm-orb-2 {
+                opacity: .72;
+            }
+
+            .wm-moon {
+                animation-duration: 6s, 8s;
+            }
+
             .wm-message {
                 padding: 70px 0;
             }
@@ -698,10 +861,13 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .wm-moon,
-            .wm-moon-ring,
-            .wm-star {
-                animation: none !important;
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
             }
         }
     </style>
