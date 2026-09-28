@@ -979,24 +979,6 @@
             }
         }
 
-        .wm-click-blessing {
-            position: fixed;
-            z-index: 10000;
-            pointer-events: none;
-            color: #6f8e74;
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: .08em;
-            text-shadow: 0 2px 10px rgba(255,255,255,.9);
-            animation: wmBlessingFloat 1.05s ease-out forwards;
-        }
-
-        @keyframes wmBlessingFloat {
-            0% {
-                opacity: 0;
-                transform: translate(-50%, -20%) scale(.88);
-            }
-
             18% {
                 opacity: 1;
                 transform: translate(-50%, -50%) scale(1);
@@ -1005,12 +987,6 @@
             100% {
                 opacity: 0;
                 transform: translate(-50%, -115%) scale(.96);
-            }
-        }
-
-        @media (max-width: 560px) {
-            .wm-click-blessing {
-                font-size: 13px;
             }
         }
 
@@ -1169,7 +1145,6 @@
     }
 
     const stamps = ['月', '兔', '福', '圓', '秋'];
-    const blessings = ['月圓人圓', '中秋快樂', '平安順心', '事事圓滿', '好事花生'];
 
     function createMooncake(x, y, index) {
         const cake = document.createElement('span');
@@ -1214,23 +1189,6 @@
         window.setTimeout(() => spark.remove(), 800);
     }
 
-    function createBlessing(x, y) {
-        if (Math.random() > .48) {
-            return;
-        }
-
-        const blessing = document.createElement('span');
-
-        blessing.className = 'wm-click-blessing';
-        blessing.textContent = blessings[(Math.random() * blessings.length) | 0];
-        blessing.style.left = x + 'px';
-        blessing.style.top = (y - 10) + 'px';
-
-        document.body.appendChild(blessing);
-
-        window.setTimeout(() => blessing.remove(), 1150);
-    }
-
     window.addEventListener('pointerdown', (event) => {
         if (event.button !== undefined && event.button !== 0) {
             return;
@@ -1260,8 +1218,6 @@
         for (let i = 0; i < 7; i++) {
             window.setTimeout(() => createSpark(event.clientX, event.clientY), i * 16);
         }
-
-        createBlessing(event.clientX, event.clientY);
     }, { passive: true });
 })();
 </script>
