@@ -913,13 +913,6 @@
             border: 1px dashed rgba(113, 72, 31, .24);
         }
 
-        .wm-click-mooncake::after {
-            content: attr(data-stamp);
-            position: relative;
-            z-index: 2;
-            text-shadow: 0 1px rgba(255,255,255,.26);
-        }
-
         @keyframes wmMooncakePop {
             0% {
                 opacity: 0;
@@ -1144,13 +1137,10 @@
         return;
     }
 
-    const stamps = ['月', '兔', '福', '圓', '秋'];
-
     function createMooncake(x, y, index) {
         const cake = document.createElement('span');
 
         cake.className = 'wm-click-mooncake';
-        cake.dataset.stamp = stamps[(Math.random() * stamps.length) | 0];
 
         const angle = (-125 + Math.random() * 70) * Math.PI / 180;
         const distance = 72 + Math.random() * 72;
